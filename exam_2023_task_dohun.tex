@@ -1,0 +1,121 @@
+\clearpage
+\section {Fruit Shopping\hfill 8 Points}
+Sogang-Mart asks SogangCS to develop a following CLI program for fruit shopping.
+In the program, keys from 0 to 5 represents fruits to be added.
+If a user presses one of them, the selected fruit is added to the basket and the total price is accumulated. 
+If the program receives key 0, it prints the total price and terminates the program.
+Our task is to check the consistency of the program.
+
+\begin{figure}[h]
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+int main() {
+    char choice;
+    int count = 0;
+    int total = 0;
+    printf("1. Add one apple to your basket.\n");
+    printf("2. Add one banana to your basket.\n");
+    printf("3. Add one orange to your basket. \n");
+    printf("4. Add one lemon to your basket. \n");
+    printf("5. Add one grape to your basket. \n");
+    printf("0. Compute the total price and exit\n");
+    while (1) {
+        printf("Select Number (0~5): ");
+        scanf(" %c", &choice);
+        switch (choice) {
+            case '0':
+                printf("Total price is %d.\n", total);
+                printf("program finished.\n");
+            case '1':
+                printf("Apple is selected. Price: 1000\n");
+                total += 1000;
+            case '2':
+                printf("Banana is selected. Price: 1500\n");
+                total += 1500;
+            case '3':
+                printf("Oragne is selected. Price: 2000\n");
+                total += 2000;
+            case '4':
+                printf("Lemon is selected. Price: 2500\n");
+                total += 2500;
+            case '5':
+                printf("Grape is selected. Price: 3000\n");
+                total += 3000;
+            default:
+                printf("Wrong input. Type between 0 to 5.\n");
+                break;
+         }  
+        if (choice == '0') break;
+    }
+    return 0;
+}
+\end{lstlisting}
+\caption{A CLI code of fruit shopping}
+\end{figure}
+\begin{enumerate}
+\item Write reasons for a space between " and \%c" in line 18. \hfill 2 Points
+\begin{solution}{5cm}
+To clear '\textbackslash n' in input buffer.
+\end{solution}
+\clearpage
+\item If the program receives the stdin input shown in Figure~\ref{cli_input}, write the response of the program for each input. \hfill 2 Points
+\newline
+\begin{figure}[h]
+\centering
+\begin{varwidth}{\linewidth}
+\begin{verbatim}
+Select Number (0~5): 1
+Select Number (0~5): 0
+\end{verbatim}
+\end{varwidth}
+\caption{Stdin input}
+\label{cli_input}
+\end{figure}
+\begin{solution}{5cm}
+Apple is selected. Price: 1000\newline
+Banana is selected. Price: 1500\newline
+Oragne is selected. Price: 2000\newline
+Lemon is selected. Price: 2500\newline
+Grape is selected. Price: 3000\newline
+Wrong input. Type between 0 to 5.\newline
+Total price is 10000.\newline
+program finished.\newline
+Apple is selected. Price: 1000\newline
+Banana is selected. Price: 1500\newline
+Oragne is selected. Price: 2000\newline
+Lemon is selected. Price: 2500\newline
+Grape is selected. Price: 3000\newline
+Wrong input. Type between 0 to 5.\newline
+\end{solution}
+\item Is the code working correctly? If not, find bugs and fix them.  \hfill 2 Points
+\begin{solution}{5cm}
+There is no break statement for each case body.
+Add break statement in every case body. \newline\newline
+\end{solution}
+\item Write output of the fixed program with the input in Figure~\ref{cli_input2}. \hfill 2 Points
+\begin{figure}[h]
+\centering
+\begin{varwidth}{\linewidth}
+\begin{verbatim}
+Select Number (0~5): 1
+Select Number (0~5): 2
+Select Number (0~5): 3
+Select Number (0~5): 4
+Select Number (0~5): 5
+Select Number (0~5): 0
+\end{verbatim}
+\end{varwidth}
+\caption{Stdin input}
+\label{cli_input2}
+\end{figure}
+\begin{solution}{5cm}
+Apple is selected. Price: 1000\newline
+Banana is selected. Price: 1500\newline
+Oragne is selected. Price: 2000\newline
+Lemon is selected. Price: 2500\newline
+Grape is selected. Price: 3000\newline
+Total price is 10000.
+program finished.
+\end{solution}
+\end{enumerate}
+\clearpage
